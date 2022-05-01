@@ -13,34 +13,27 @@
 </head>
 <body>
     
-    <section>
-        <div>
-            <h1>Euro Capitals Quiz</h1>
-            <p>Can you name all the capital cities?</p>
-        </div>
-        <div>
-            <p>Correct <span>0</span></p>
-            <p>Incorrect <span>0</span></p>
-            <p>Remaining <span>0</span></p>
-        </div>
-    </section>
+    <header class="home-heading">
+        <h1>Euro Capitals Quiz!</h1>
 
-    <section>
-        <div>
-            <h2>Country</h2>
-            <img src="" alt="">
+        <p>Who is brave enough to play the European capitals quiz game?</p>
+    </header>
+
+    <section class="user-sign-up">
+        <div class="user-form">
+            <label for="username">Username: </label>
+            <input type="text" id="username" name="username" placeholder="Type username here" required>
+
+            <form action="index.html" method="get">
+                <button>Start Game!</button>
+            </form>
         </div>
-        <div>
-            <h2>Capital</h2>
-            <label for="capital">Capital City:</label>
-            <input type="text" id="capital" name="capital" required>
-            <button>Submit Answer</button>
+        <div class="euro-pic">
+
         </div>
-        <div>
-            <button>New Game</button>
-            <button>Quit Game</button>
-        </div>
+        
     </section>
+    
 
     <script src='assets/JS/script.js'></script>
 </body>
