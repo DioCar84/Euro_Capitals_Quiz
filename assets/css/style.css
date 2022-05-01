@@ -10,5 +10,18 @@ body {
     text-align: center;
 }
 
-/* Home Page Style */
+/* Index Page Style */
 
+/* Header */
+header {
+    margin: 10% auto 5%;
+    font-family: 'Playfair Display', serif;
+    font-size: 150%;
+}
+
+/* Username Creation Section */
+.euro-pic {
+    height: 400px;
+    width: 400px;
+    background: url('../images/European_Countries.png') no-repeat center center;
+}
