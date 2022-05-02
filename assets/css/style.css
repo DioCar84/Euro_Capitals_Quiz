@@ -25,6 +25,7 @@ header {
 .user-sign-up {
     display: inline-block;
     background-color: #f2f6e1;
+    width: 50%;
 }
 
 .user-form {
@@ -149,9 +150,33 @@ header {
 .euro-pic {
     height: 450px;
     width: 450px;
+    margin: 10% auto 0;
 }
 
 #euro-pic-img {
     height: 400px;
     width: auto;
+}
+
+/* Game Page Style */
+#game_section {
+    background-color: #f2f6e1;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.scoreboard_item {
+    font-size: 200%;
+    margin: 5% auto;
+    display: inline-block;
+}
+
+#correct_score {
+    float: left;
+    margin-left: 5%;
+}
+
+#questions_remaining {
+    float: right;
+    margin-right: 5%;
 }
