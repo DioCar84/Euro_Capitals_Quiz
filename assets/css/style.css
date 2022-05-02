@@ -1,11 +1,11 @@
 
-/* font-family: 'Playfair Display', serif;
-   font-family: 'Rajdhani', sans-serif; */
+/* all images taken from  www.pixabay.com
+   code for the #start_game_button was taken from  https://getcssscan.com/css-buttons-examples */
 
 /* Global Style */
 
 body {
-    background-color: white;
+    background-color: #039;
     font-family: 'Rajdhani', sans-serif;
     text-align: center;
 }
@@ -17,11 +17,141 @@ header {
     margin: 10% auto 5%;
     font-family: 'Playfair Display', serif;
     font-size: 150%;
+    background-color: #039;
+    color: #fc0;
 }
 
 /* Username Creation Section */
+.user-sign-up {
+    display: inline-block;
+    background-color: #f2f6e1;
+}
+
+.user-form {
+    margin: 0 auto;
+}
+
+#username_label {
+    display: block;
+    margin: 15% auto 3%;
+    font-size: 230%;
+    color: #2f587b;
+}
+
+#username {
+    margin-bottom: 5%;
+    line-height: 2;
+    width: 45%;
+    text-align: center;
+}
+
+#start_game_button {
+  align-items: center;
+  appearance: none;
+  background-clip: padding-box;
+  background-color: initial;
+  background-image: none;
+  border-style: none;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  flex-direction: row;
+  flex-shrink: 0;
+  font-family: 'Rajdhani', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  justify-content: center;
+  line-height: 24px;
+  margin: 0;
+  min-height: 64px;
+  outline: none;
+  overflow: visible;
+  padding: 19px 26px;
+  pointer-events: auto;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  text-transform: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  vertical-align: middle;
+  width: auto;
+  word-break: keep-all;
+  z-index: 0;
+}
+
+@media (min-width: 768px) {
+    #start_game_button {
+    padding: 19px 32px;
+  }
+}
+
+#start_game_button:before,
+#start_game_button:after {
+  border-radius: 80px;
+}
+
+#start_game_button:before {
+  background-color: #b5dfee;
+  content: "";
+  display: block;
+  height: 100%;
+  left: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  width: 100%;
+  z-index: -2;
+}
+
+#start_game_button:after {
+  background-color: initial;
+  background-image: linear-gradient(92.83deg, #2597a5 0, #2f587b 100%);
+  bottom: 4px;
+  content: "";
+  display: block;
+  left: 4px;
+  overflow: hidden;
+  position: absolute;
+  right: 4px;
+  top: 4px;
+  transition: all 100ms ease-out;
+  z-index: -1;
+}
+
+#start_game_button:hover:not(:disabled):after {
+  bottom: 0;
+  left: 0;
+  right: 0;
+  top: 0;
+  transition-timing-function: ease-in;
+}
+
+#start_game_button:active:not(:disabled) {
+  color: #ccc;
+}
+
+#start_game_button:active:not(:disabled):after {
+  background-image: linear-gradient(0deg, rgba(0, 0, 0, .2), rgba(0, 0, 0, .2)), linear-gradient(92.83deg, #f3a85c 0, #eb821e 100%);
+  bottom: 4px;
+  left: 4px;
+  right: 4px;
+  top: 4px;
+}
+
+#start_game_button:disabled {
+  cursor: default;
+  opacity: .24;
+}
+
 .euro-pic {
+    height: 450px;
+    width: 450px;
+}
+
+#euro-pic-img {
     height: 400px;
-    width: 400px;
-    background: url('../images/European_Countries.png') no-repeat center center;
+    width: auto;
 }
