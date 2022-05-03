@@ -31,14 +31,17 @@
             </div>
             <div id="capital" class="question_area">
                 <h2>Capital</h2>
-                <label for="capital">Capital City:</label>
-                <input type="text" id="capital" name="capital" required>
-                <button>Submit Answer</button>
+                <div id="city_input">
+                    <label class="city_display" id="city_label" for="capital_city">City:</label>
+                    <input class="city_display" type="text" id="capital_city" name="capital_city" required>
+                </div>
+                
+                <button class="city_display game_button" id="answer_button">Submit Answer</button>
             </div>
         </div>
         <div>
-            <button>New Game</button>
-            <button>Quit Game</button>
+            <button class="game_button finish_button">New Game</button>
+            <button class="game_button finish_button">Quit Game</button>
         </div>
     </section>
 

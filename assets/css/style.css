@@ -46,7 +46,7 @@ header {
     margin: 5% auto;
 }
 
-#start_game_button {
+.game_button {
   background-image: linear-gradient(to right, #2f587b, #039);
   padding: 2% 5%;
   border-radius: 5%;
@@ -57,7 +57,7 @@ header {
 }
 
 
-#start_game_button:hover {
+.game_button:hover {
   background-image: linear-gradient(to right, #f3a85c 0, #eb821e 100%);
   transform: scale(1.1);
 }
@@ -106,6 +106,8 @@ header {
     width: 40%;
     display: inline-block;
     position: relative;
+    margin: 5% 0 10%;
+    font-size: 180%;
 }
 
 #country {
@@ -119,4 +121,35 @@ header {
 
 #capital {
     left: 5%;
+}
+
+.city_display {
+    text-align: center;
+    margin: 5%;
+}
+
+#city_input {
+    margin: 10% auto;
+    position: relative;
+    top: 60px;
+}
+
+#city_label {
+    font-size: 120%;
+}
+
+#capital_city {
+    width: 60%;
+    line-height: 2;
+    position: relative;
+    bottom: 5px;
+}
+
+#answer_button {
+    font-size: 80%;
+    margin: 18%;
+}
+
+.finish_button {
+    margin: 2% 10%;
 }
