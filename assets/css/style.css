@@ -80,10 +80,14 @@ header {
     width: 60%;
 }
 
+/* the scoreboard */
 .scoreboard_item {
     font-size: 200%;
     margin: 5% auto;
     display: inline-block;
+    background-color: black;
+    color: #fc0;
+    padding: 2%;
 }
 
 #correct_score {
@@ -94,4 +98,25 @@ header {
 #questions_remaining {
     float: right;
     margin-right: 5%;
+}
+
+/* country and capital */
+
+.question_area {
+    width: 40%;
+    display: inline-block;
+    position: relative;
+}
+
+#country {
+    right: 5%;
+}
+
+#country_flag {
+    height: 250px;
+    width: auto;
+}
+
+#capital {
+    left: 5%;
 }
