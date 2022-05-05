@@ -48,9 +48,9 @@ function createPlayer() {
 
                         <section id="game_section">
                             <div id="scoreboard">
-                                <p id="correct_score" class="scoreboard_item">Correct <span>0</span></p>
-                                <p id="incorrect_score" class="scoreboard_item">Incorrect <span>0</span></p>
-                                <p id="questions_remaining" class="scoreboard_item">Remaining <span>0</span></p>
+                                <p id="correct_score" class="scoreboard_item">Correct <span id="correct_score_value">0</span></p>
+                                <p id="incorrect_score" class="scoreboard_item">Incorrect <span id="incorrect_score_value">0</span></p>
+                                <p id="questions_remaining" class="scoreboard_item">Remaining <span id="questions_remaining_value">0</span></p>
                             </div>
                             <div>
                                 <div id="country" class="question_area">
@@ -82,11 +82,13 @@ function createPlayer() {
 };
 
 /**
- * 
+ * resets the scoreboard and
  * calls generateQuestion to generate a random country
  */
 function newGame() {
-
+    document.getElementById("correct_score_value").textContent = 0;
+    document.getElementById("incorrect_score_value").textContent = 0;
+    document.getElementById("questions_remaining_value").textContent = capitals.length;
     generateQuestion();
 };
 
@@ -101,11 +103,31 @@ function generateQuestion() {
   document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";  
 };
 
-function correctScore() {};
+/**
+ * will increment the players' correct score value by 1
+ */
+function correctScore() {
+    let score = parseInt(document.getElementById("correct_score_value").textContent) +1;
+    document.getElementById("correct_score_value").textContent = score;
+    decrementRemainingQuestions(); 
+};
 
-function incorrectScore() {};
+/**
+ * will increment the players' incorrect score value by 1
+ */
+function incorrectScore() {
+    let score = parseInt(document.getElementById("incorrect_score_value").textContent) +1;
+    document.getElementById("incorrect_score_value").textContent = score;
+    decrementRemainingQuestions();
+};
 
-function decrementRemainingQuestions() {};
+/**
+ * will decrement the remaining questions value by 1
+ */
+function decrementRemainingQuestions() {
+    let score = parseInt(document.getElementById("questions_remaining_value").textContent) -1;
+    document.getElementById("questions_remaining_value").textContent = score;
+};
 
 function checkAnswer() {};
 
