@@ -43,7 +43,7 @@ function createPlayer() {
                         
                         <header>
                                 <h1>Euro Capitals Quiz!</h1>
-                                <p>${username}, you name all the capital cities?</p>                
+                                <p>${username}, can you name all the capital cities?</p>                
                         </header>
 
                         <section id="game_section">
