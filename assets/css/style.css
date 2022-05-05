@@ -9,7 +9,7 @@ body {
     text-align: center;
 }
 
-/* Index Page Style */
+/* Index - Username Page Style */
 
 /* Header */
 header {
@@ -73,7 +73,7 @@ header {
     width: auto;
 }
 
-/* Game Page Style */
+/* Index - Game Page Style */
 #game_section {
     background-color: #f2f6e1;
     margin: 0 auto;
