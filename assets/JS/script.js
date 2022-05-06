@@ -1,12 +1,57 @@
+/* creating a variable to store the username chosen and also creating the capitals object that stores all the country/capital pairs
+   then an event listener is added to the start game button and also a listener in case the user presses the "enter" key instead */
+
 let username;
-let capitals = [["Albania", "Tirana"], ["Andorra", "Andorra la Vella"], ["Armenia", "Yerevan"], ["Austria", "Viena"], ["Azerbaijan", "Baku"], ["Belarus", "Minsk"], ["Belgium", "Brussels"],
-                    ["Bosnia and Herzegovina", "Sarajevo"], ["Bulgaria", "Sofia"], ["Croatia", "Zagreb"], ["Cyprus", "Nicosia"], ["Czech Republic", "Prague"], ["Denmark", "Copenhagen"],
-                    ["Estonia", "Tallinn"], ["Finland", "Helsinki"], ["France", "Paris"], ["Georgia", "Tbilisi"], ["Germany", "Berlin"], ["Greece", "Athens"], ["Hungary", "Budapest"],
-                    ["Iceland", "Reykjavik"], ["Ireland", "Dublin"], ["Italy", "Rome"], ["Kazakhstan", "Nur-Sultan"], ["Kosovo", "Pristina"], ["Latvia", "Riga"], ["Liechtenstein", "Vaduz"],
-                    ["Lithuania", "Vilnius"], ["Luxembourg", "Luxembourg"], ["Malta", "Valletta"], ["Moldova", "Chisinau"], ["Monaco", "Monaco"], ["Montenegro", "Podgorica"], 
-                    ["Netherlands", "Amsterdam"], ["Norway", "Oslo"], ["Poland", "Warsaw"], ["Portugal", "Lisbon"], ["Romania", "Bucharest"], ["Russia", "Moscow"], ["San Marino", "San Marino"],
-                    ["Serbia", "Belgrade"], ["Slovakia", "Bratislava"], ["Slovenia", "Ljubljana"], ["Spain", "Madrid"], ["Sweden", "Stockholm"], ["Switzerland", "Bern"], ["Turkey", "Ankara"],
-                    ["Ukraine", "Kiev"], ["United Kingdom", "London"]];
+let capitals = {"Albania": "Tirana", 
+                "Andorra": "Andorra la Vella", 
+                "Armenia": "Yerevan", 
+                "Austria": "Viena", 
+                "Azerbaijan": "Baku", 
+                "Belarus": "Minsk", 
+                "Belgium": "Brussels",
+                "Bosnia and Herzegovina": "Sarajevo", 
+                "Bulgaria": "Sofia", 
+                "Croatia": "Zagreb", 
+                "Cyprus": "Nicosia", 
+                "Czech Republic": "Prague", 
+                "Denmark": "Copenhagen",
+                "Estonia": "Tallinn", 
+                "Finland": "Helsinki", 
+                "France": "Paris", 
+                "Georgia": "Tbilisi", 
+                "Germany": "Berlin", 
+                "Greece": "Athens", 
+                "Hungary": "Budapest",
+                "Iceland": "Reykjavik", 
+                "Ireland": "Dublin", 
+                "Italy": "Rome", 
+                "Kazakhstan": "Nur-Sultan", 
+                "Kosovo": "Pristina", 
+                "Latvia": "Riga", 
+                "Liechtenstein": "Vaduz",
+                "Lithuania": "Vilnius", 
+                "Luxembourg": "Luxembourg", 
+                "Malta": "Valletta", 
+                "Moldova": "Chisinau", 
+                "Monaco": "Monaco", 
+                "Montenegro": "Podgorica",
+                "Netherlands": "Amsterdam", 
+                "Norway": "Oslo", 
+                "Poland": "Warsaw", 
+                "Portugal": "Lisbon", 
+                "Romania": "Bucharest", 
+                "Russia": "Moscow", 
+                "San Marino": "San Marino",
+                "Serbia": "Belgrade", 
+                "Slovakia": "Bratislava", 
+                "Slovenia": "Ljubljana", 
+                "Spain": "Madrid", 
+                "Sweden": "Stockholm", 
+                "Switzerland": "Bern", 
+                "Turkey": "Ankara",
+                "Ukraine": "Kiev", 
+                "United Kingdom": "London"
+                };
 
 let button = document.getElementById("start_game_button");
     button.addEventListener("click", function() {
@@ -20,7 +65,7 @@ document.getElementById("start_game_button").addEventListener("keydown", functio
 
 /**
  * creates a user from the name input in the username text field
- * after that, switches the html to the main game screen
+ * after that, switches the html to the main game page
  */
 function createPlayer() {
     
@@ -54,7 +99,7 @@ function createPlayer() {
                             </div>
                             <div>
                                 <div id="country" class="question_area">
-                                    <h2 id="country_name">Country: Albania</h2>
+                                    <h2 id="country_name">Country: <span id="current_country">Albania</span></h2>
                                     <img id="country_flag" src="./assets/images/country_flags/Albania Flag.png" alt="the flag of the country that the user must guess the capital city of">
                                 </div>
                                 <div id="capital" class="question_area">
@@ -79,28 +124,42 @@ function createPlayer() {
 
         document.body.innerHTML = html;
         newGame();
+
+        /* adds event listener to submit button to check user response
+         also adds key press listener in case user hits the "enter" key instead of clicking the submit button */
+        let userAnswer = document.getElementById("answer_button");
+        userAnswer.addEventListener("click", function() {
+            checkAnswer();
+        });
+
+        document.getElementById("answer_button").addEventListener("keydown", function(event) {
+            if(event === "Enter") {
+                checkAnswer();
+            }
+        });
 };
 
 /**
  * resets the scoreboard and
- * calls generateQuestion to generate a random country
+ * calls generateQuestion to generate a random country/capital pair
  */
 function newGame() {
     document.getElementById("correct_score_value").textContent = 0;
     document.getElementById("incorrect_score_value").textContent = 0;
-    document.getElementById("questions_remaining_value").textContent = capitals.length;
+    document.getElementById("questions_remaining_value").textContent = Object.keys(capitals).length;
     generateQuestion();
 };
 
 /**
- * generates and random country and flag from the capitals array
+ * generates and random country/capital pair from the capitals object and the corresponding flag
  */
 function generateQuestion() {
-  let randomCountry = capitals[Math.floor(Math.random()* capitals.length + 1)][0];
+  let capitalsKeysArray = Object.keys(capitals); 
+  let randomCountry = capitalsKeysArray[Math.floor(Math.random()* capitalsKeysArray.length + 1)];
   let flag = randomCountry + " Flag.png"; 
   
-  document.getElementById("country_name").innerText = "Country: " + `${randomCountry}` + "";
-  document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";  
+  document.getElementById("country_name").innerHTML = 'Country: <span id="current_country">' + `${randomCountry}` + '</span>';
+  document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";
 };
 
 /**
@@ -129,7 +188,19 @@ function decrementRemainingQuestions() {
     document.getElementById("questions_remaining_value").textContent = score;
 };
 
-function checkAnswer() {};
+function checkAnswer() {
+    let country = document.getElementById("current_country").textContent;
+    let answer = document.getElementById("capital_city").value;
+    if(answer === capitals[country]) {
+        correctScore();
+        alert("Good job! Your answer was correct");
+        generateQuestion();
+    } else {
+        incorrectScore();
+        alert("Sorry you got it wrong! The correct answer was: " + `${capitals[country]}`);
+        generateQuestion();
+    }
+};
 
 function newUser() {};
 
