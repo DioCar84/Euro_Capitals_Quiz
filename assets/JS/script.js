@@ -53,15 +53,18 @@ let capitals = {"Albania": "Tirana",
                 "United Kingdom": "London"
                 };
 
+document.getElementById("username").focus();
+
 let button = document.getElementById("start_game_button");
     button.addEventListener("click", function() {
         createPlayer();
     });
+
 document.getElementById("start_game_button").addEventListener("keydown", function(event) {
-    if(event === "Enter") {
+    if(event.key === "Enter") {
         createPlayer();
     }
-})
+});
 
 /**
  * creates a user from the name input in the username text field
@@ -113,8 +116,8 @@ function createPlayer() {
                                 </div>
                             </div>
                             <div>
-                                <button class="game_button finish_button">New Game</button>
-                                <button class="game_button finish_button">Quit Game</button>
+                                <button id="new_game_button" class="game_button finish_button">New Game</button>
+                                <button id="quit_game_button" class="game_button finish_button">Quit Game</button>
                             </div>
                         </section>
 
@@ -124,6 +127,7 @@ function createPlayer() {
 
         document.body.innerHTML = html;
         newGame();
+        document.getElementById("capital_city").focus();
 
         /* adds event listener to submit button to check user response
          also adds key press listener in case user hits the "enter" key instead of clicking the submit button */
@@ -132,8 +136,8 @@ function createPlayer() {
             checkAnswer();
         });
 
-        document.getElementById("answer_button").addEventListener("keydown", function(event) {
-            if(event === "Enter") {
+        document.getElementById("capital_city").addEventListener("keydown", function(event) {
+            if(event.key === "Enter") {
                 checkAnswer();
             }
         });
@@ -148,18 +152,33 @@ function newGame() {
     document.getElementById("incorrect_score_value").textContent = 0;
     document.getElementById("questions_remaining_value").textContent = Object.keys(capitals).length;
     generateQuestion();
+
+    let replayGame = document.getElementById("new_game_button");
+        replayGame.addEventListener("click", function() {
+            newGame();
+        });
+
+    let quitGame = document.getElementById("quit_game_button");
+        quitGame.addEventListener("click", function() {
+            endGame();
+        }); 
 };
 
 /**
- * generates and random country/capital pair from the capitals object and the corresponding flag
+ * checks if there any still countries remaining, if not it will end the game
+ * generates a random country/capital pair from the capitals object and the corresponding flag
  */
 function generateQuestion() {
-  let capitalsKeysArray = Object.keys(capitals); 
-  let randomCountry = capitalsKeysArray[Math.floor(Math.random()* capitalsKeysArray.length + 1)];
-  let flag = randomCountry + " Flag.png"; 
-  
-  document.getElementById("country_name").innerHTML = 'Country: <span id="current_country">' + `${randomCountry}` + '</span>';
-  document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";
+    if(parseInt(document.getElementById("questions_remaining_value").textContent) <= 0) {
+        endGame();
+    } else {
+    let capitalsKeysArray = Object.keys(capitals); 
+    let randomCountry = capitalsKeysArray[Math.floor(Math.random()* capitalsKeysArray.length)];
+    let flag = randomCountry + " Flag.png"; 
+    
+    document.getElementById("country_name").innerHTML = 'Country: <span id="current_country">' + `${randomCountry}` + '</span>';
+    document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";
+    }
 };
 
 /**
@@ -188,21 +207,36 @@ function decrementRemainingQuestions() {
     document.getElementById("questions_remaining_value").textContent = score;
 };
 
+/**
+ * checks user answer against the correct answer
+ * will increment the score based on if user answer is correct or incorrect
+ * will decrement the number of remaining countries
+ */
 function checkAnswer() {
     let country = document.getElementById("current_country").textContent;
     let answer = document.getElementById("capital_city").value;
     if(answer === capitals[country]) {
         correctScore();
         alert("Good job! Your answer was correct");
+        delete capitals[country];
         generateQuestion();
     } else {
         incorrectScore();
         alert("Sorry you got it wrong! The correct answer was: " + `${capitals[country]}`);
+        delete capitals[country];
         generateQuestion();
     }
 };
 
-function newUser() {};
-
-function endGame() {};
+/**
+ * terminates the current game and presents the user with the score
+ * both the number of correct and incorrect answers will be displayed
+ * reloads the page to the username input screen
+ */
+function endGame() {
+    let correctScore = document.getElementById("correct_score_value").textContent;
+    let incorrectScore = document.getElementById("incorrect_score_value").textContent;
+    alert(`Game Over! You had ${correctScore} correct answers and ${incorrectScore} incorrect.`);
+    location.reload();
+};
 
