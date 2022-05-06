@@ -127,6 +127,7 @@ function createPlayer() {
 
         document.body.innerHTML = html;
         newGame();
+        document.getElementById("capital_city").value = "";
         document.getElementById("capital_city").focus();
 
         /* adds event listener to submit button to check user response
@@ -219,11 +220,15 @@ function checkAnswer() {
         correctScore();
         alert("Good job! Your answer was correct");
         delete capitals[country];
+        document.getElementById("capital_city").value = "";
+        document.getElementById("capital_city").focus();
         generateQuestion();
     } else {
         incorrectScore();
         alert("Sorry you got it wrong! The correct answer was: " + `${capitals[country]}`);
         delete capitals[country];
+        document.getElementById("capital_city").value = "";
+        document.getElementById("capital_city").focus();
         generateQuestion();
     }
 };
