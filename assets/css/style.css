@@ -81,11 +81,14 @@ header {
 }
 
 /* the scoreboard */
+#scoreboard {
+    background-color: black;
+}
+
 .scoreboard_item {
     font-size: 200%;
     margin: 5% auto;
     display: inline-block;
-    background-color: black;
     color: #fc0;
     padding: 2%;
 }
@@ -112,6 +115,7 @@ header {
 
 #country {
     right: 5%;
+    height: 400px;
 }
 
 #country_flag {
@@ -121,6 +125,11 @@ header {
 
 #capital {
     left: 5%;
+    height: 400px;
+}
+
+#capital h2 {
+    margin: 1%;
 }
 
 .city_display {
@@ -129,13 +138,15 @@ header {
 }
 
 #city_input {
-    margin: 10% auto;
+    margin: 7.5% auto;
     position: relative;
-    top: 60px;
+    top: 7%;
 }
 
 #city_label {
     font-size: 120%;
+    display: block;
+    margin: 0 auto;
 }
 
 #capital_city {
@@ -148,8 +159,128 @@ header {
 #answer_button {
     font-size: 80%;
     margin: 18%;
+    position: relative;
+    bottom: 4.5%;
 }
 
 .finish_button {
     margin: 2% 10%;
+}
+
+/* Media Queries */
+
+/* For screen sizes from 1550px wide and down */
+@media screen and (max-width: 1550px) {
+    #game_section {
+        width: 70%;
+    }
+}
+
+/* For screen sizes from 1200px wide and down */
+@media screen and (max-width: 1200px) {
+    #game_section {
+        width: 80%;
+    }
+}
+
+/* For screen sizes from 900px wide and down */
+@media screen and (max-width: 900px) {
+    .euro-pic {
+        width: 100%;
+    }
+
+    #euro-pic-img {
+        width: 100%;
+    }
+
+    #game_section {
+        width: 100%;
+    }
+
+    #country_flag {
+        height: 200px;
+        width: 300px;
+    }
+
+    #capital {
+        height: 300px;
+    }
+
+    #city_input {
+        margin: 5% auto;
+        top: 7%
+    }
+
+    #answer_button {
+        margin: 15%;
+        bottom: 4.5%;
+    }
+}
+
+/* For screen sizes from 600px wide and down */
+@media screen and (max-width: 600px) {
+    .user-sign-up {
+        width: 80%;
+    }
+
+    .scoreboard_item {
+        font-size: 140%;
+        font-weight: bold;
+    }
+
+    #correct_score {
+        margin-left: 0;
+    }
+
+    #questions_remaining {
+        margin-right: 0;
+    }
+
+    .question_area {
+        width: 100%;
+    }
+
+    #country {
+        right: 0;
+        height: 350px;
+    }
+
+    #capital {
+        left: 0;
+        height: 350px;
+    }
+
+    #answer_button {
+        margin: 7%;
+    }
+
+    .finish_button {
+        margin: 5% 10%;
+    }
+}
+
+/* For screen sizes from 400px wide and down */
+@media screen and (max-width: 400px) {
+    .user-sign-up {
+        width: 100%;
+    }
+
+    .scoreboard_item {
+        font-size: 160%;
+        font-weight: bold;
+        display: block;
+    }
+
+    #correct_score {
+        float: none;
+    }
+
+    #questions_remaining {
+        float: none;
+    }
+
+    #country_flag {
+        height: 150px;
+        width: 250px;
+    }
 }
