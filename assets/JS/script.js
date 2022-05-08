@@ -79,7 +79,7 @@ function createPlayer() {
             username = document.getElementById("username").value;
 
             let html = `<!DOCTYPE html>
-                        <html>
+                        <html lang="en">
                         <head>
                             <meta charset='utf-8'>
                             <meta http-equiv='X-UA-Compatible' content='IE=edge'>
@@ -251,7 +251,7 @@ function checkAnswer() {
 function endGame() {
     let correctScore = document.getElementById("correct_score_value").textContent;
     let incorrectScore = document.getElementById("incorrect_score_value").textContent;
-    alert(`Game Over! You had ${correctScore} correct answers and ${incorrectScore} incorrect.`);
+    alert(`Game Over! You had ${correctScore} correct answer(s) and ${incorrectScore} incorrect.`);
     location.reload();
 };
 
