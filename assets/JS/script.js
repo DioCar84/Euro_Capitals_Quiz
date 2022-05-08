@@ -69,6 +69,7 @@ document.getElementById("start_game_button").addEventListener("keydown", functio
 /**
  * creates a user from the name input in the username text field
  * after that, switches the html to the main game page
+ * if the user leaves the username field blank, will prompt user to provide one
  */
 function createPlayer() {
     
@@ -151,6 +152,7 @@ function createPlayer() {
 /**
  * resets the scoreboard and
  * calls generateQuestion to generate a random country/capital pair
+ * also adds event listeners to the new game/quit game buttons
  */
 function newGame() {
     document.getElementById("correct_score_value").textContent = 0;
@@ -216,6 +218,7 @@ function decrementRemainingQuestions() {
  * checks user answer against the correct answer
  * will increment the score based on if user answer is correct or incorrect
  * will decrement the number of remaining countries
+ * if the user leaves the answer field blank, will prompt user to provide one
  */
 function checkAnswer() {
     let country = document.getElementById("current_country").textContent;
