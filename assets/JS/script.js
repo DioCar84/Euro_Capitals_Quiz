@@ -73,7 +73,7 @@ document.getElementById("start_game_button").addEventListener("keydown", functio
  */
 function createPlayer() {
     
-        if(username = document.getElementById("username").value === "") {
+        if(document.getElementById("username").value === "") {
             alert("Please enter a username before continuing");
         } else {
             username = document.getElementById("username").value;
@@ -147,7 +147,7 @@ function createPlayer() {
             }
         });
     }
-};
+}
 
 /**
  * resets the scoreboard and
@@ -169,7 +169,7 @@ function newGame() {
         quitGame.addEventListener("click", function() {
             endGame();
         }); 
-};
+}
 
 /**
  * checks if there any still countries remaining, if not it will end the game
@@ -186,7 +186,7 @@ function generateQuestion() {
     document.getElementById("country_name").innerHTML = 'Country: <span id="current_country">' + `${randomCountry}` + '</span>';
     document.getElementById("country_flag").src = "./assets/images/country_flags/" + `${flag}` + "";
     }
-};
+}
 
 /**
  * will increment the players' correct score value by 1
@@ -195,7 +195,7 @@ function correctScore() {
     let score = parseInt(document.getElementById("correct_score_value").textContent) +1;
     document.getElementById("correct_score_value").textContent = score;
     decrementRemainingQuestions(); 
-};
+}
 
 /**
  * will increment the players' incorrect score value by 1
@@ -204,7 +204,7 @@ function incorrectScore() {
     let score = parseInt(document.getElementById("incorrect_score_value").textContent) +1;
     document.getElementById("incorrect_score_value").textContent = score;
     decrementRemainingQuestions();
-};
+}
 
 /**
  * will decrement the remaining questions value by 1
@@ -212,7 +212,7 @@ function incorrectScore() {
 function decrementRemainingQuestions() {
     let score = parseInt(document.getElementById("questions_remaining_value").textContent) -1;
     document.getElementById("questions_remaining_value").textContent = score;
-};
+}
 
 /**
  * checks user answer against the correct answer
@@ -241,7 +241,7 @@ function checkAnswer() {
         document.getElementById("capital_city").focus();
         generateQuestion();
     }
-};
+}
 
 /**
  * terminates the current game and presents the user with the score
@@ -253,5 +253,5 @@ function endGame() {
     let incorrectScore = document.getElementById("incorrect_score_value").textContent;
     alert(`Game Over! You had ${correctScore} correct answer(s) and ${incorrectScore} incorrect.`);
     location.reload();
-};
+}
 
