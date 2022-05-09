@@ -70,7 +70,10 @@ Users of this game will get a chance to test their knowledge regarding capital c
 - I confirmed that the game results are always correct.
 - I confirmed that the header, scoreboard and game areas are all readable and easy to understand.
 - I confirmed that the colors and fonts chosen are easy to read and accessible by running it through lighthouse in devtools.
+
 ![lighthouse](./assets/images/screenshots/lighthouse.png)
+
+- I confirmed that this project is responsive, looks good and functions on all standard screen szes using devtools device toolbar.
 
 
 ### Validator Testing 

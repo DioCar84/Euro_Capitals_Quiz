@@ -98,7 +98,7 @@ function createPlayer() {
                                     <p>${username}, can you name all the capital cities?</p>                
                             </header>
 
-                            <section id="game_section">
+                            <div id="game_section">
                                 <div id="scoreboard">
                                     <p id="correct_score" class="scoreboard_item">Correct <span id="correct_score_value">0</span></p>
                                     <p id="incorrect_score" class="scoreboard_item">Incorrect <span id="incorrect_score_value">0</span></p>
@@ -123,7 +123,7 @@ function createPlayer() {
                                     <button id="new_game_button" class="game_button finish_button">New Game</button>
                                     <button id="quit_game_button" class="game_button finish_button">Quit Game</button>
                                 </div>
-                            </section>
+                            </div>
 
                             <script src='assets/JS/script.js'></script>
                         </body>
